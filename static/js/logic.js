@@ -1,7 +1,7 @@
 console.log("logic.js file is loaded")
 
 //Store API endpoint inside a queryUrl
-var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson";
+var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.geojson";
 
 //Perform a GET request to the query URL
 d3.json(queryUrl).then(function(data) {
