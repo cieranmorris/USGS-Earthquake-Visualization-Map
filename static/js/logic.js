@@ -92,11 +92,15 @@ d3.json(geoData).then(function(data) {
     }
   }).addTo(myMap);
 
-
+  //Create a legend control object
   var legend = L.control({
     position: "bottomright",
-
   });
+
+  // //Add in details for the legend
+  // legend.onAdd = function() {
+  //   var div = L.
+  // };
   // // Create a layer control
   // L.control.layers(baseMaps, overlayMaps, {
   //   collapsed: false
