@@ -1,5 +1,6 @@
 console.log("logic.js file is loaded")
 
+//Create function to coordinate earthquake color based on depth
 function depthColor(depth) {
   var color = "";
   if(depth > 90) {
@@ -18,13 +19,14 @@ function depthColor(depth) {
   return color
 }
 
+//Function for coordinating earthquake magnitude?
 function getRadius(magnitude) {
   var magnitude = "";
 
 }
 
 //Store API endpoint inside a queryUrl
-var geoData = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.geojson";
+var geoData = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson";
 
 //Creating static tile maps
 var satellitemap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
@@ -55,7 +57,7 @@ var lightmap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{
       "Light_Map": lightmap
     };
 
-// Create our map, giving it the satellite and earthquakes layers to display on load
+// Create the map, giving it the satellite layer to display on load
 var myMap = L.map("map", {
   center: [
     37.09, -95.71
@@ -67,11 +69,12 @@ var myMap = L.map("map", {
 //Perform a GET request to the query URL
 d3.json(geoData).then(function(data) {
     console.log(data)
-  //GeoJSON
+  //Load GeoJSON data and create circle markers based on lat/lng coordinates
   L.geoJSON(data, {
     pointToLayer: function(feature, latlng) {
       return L.circleMarker(latlng);
   },
+    //Color coordinate fill color of circles based on depth of earthquakes
     style: function (feature) {
       return {
         radius: feature.properties.mag*5,
