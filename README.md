@@ -20,21 +20,15 @@ Using Leaflet and MapBox in the JavaScript code, all earthquakes from the geoJSO
 
 * A color coded legend located in the bottom right corner of the broswer provides context for the depth of all earthquakes plotted on the map.
 
+* A layer control center is located in the upper righthand corner of the screen that allows the user to switch between base maps that visualize this data in light map, dark map, and satellite map views.
 
+### Seismic Activity in Relation to Tectonic Plates
 
-### Level 2: More Data (Optional)
+To take this analysis further, the tectonic plates of the earth were integrated into the dataset in order to illustrate the relationship between tectonic plates and seismic activity. This second dataset on tectonic plates was pulled from [this Github link](https://github.com/fraxen/tectonicplates), and integrated into the same JavaScript code for the earthquake visualizations.
 
+* An added element to the layer control center allows the user to toggle independently between the earthquake data and the tectonic plate data in order to visualize their relative locations and potential effects on size and magnitude of all reported earthquakes around the world.
 
-
-The USGS wants you to plot a second data set on your map to illustrate the relationship between tectonic plates and seismic activity. You will need to pull in a second data set and visualize it along side your original set of data. Data on tectonic plates can be found at <https://github.com/fraxen/tectonicplates>.
-
-In this step we are going to..
-
-* Plot a second data set on our map.
-
-* Add a number of base maps to choose from as well as separate out our two different data sets into overlays that can be turned on and off independently.
-
-* Add layer controls to our map.
+### Final Analysis
 
 - - -
 
