@@ -10,21 +10,17 @@ This project encompassed USGS is interested in building a new set of tools that 
 
 The data analyzed in this project was derived from the [USGS GeoJSON Feed](http://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php), which provides earthquake data in a number of different formats and is updated every 5 minutes. The JSON selected for this visualization was 'All Earthquakes from the Past 7 Days' and was selected on May 13th, 2021.
 
-2. **Import & Visualize the Data**
+### Data Import and Visualization
 
-   Create a map using Leaflet that plots all of the earthquakes from your data set based on their longitude and latitude.
+Using Leaflet and MapBox in the JavaScript code, all earthquakes from the geoJSON were plotted on the map based on their latitude and longitude.
 
-   * Your data markers should reflect the magnitude of the earthquake by their size and the depth of the earth quake by color. Earthquakes with higher magnitudes should appear larger and earthquakes with greater depth should appear darker in color.
+* All earthquakes are represented by a semi-transparent circle, which is sized based on the magnitude of the earthquake and color coded based on the depth of the earthquake. Specifically, earthquakes with higher magnitudes display a larger radius and earthquakes with greater depth display a deeper shade of red. 
 
-   * **HINT** the depth of the earth can be found as the third coordinate for each earthquake.
+* When clicking on any earthquake radius across the map, a popup appears providing additional information about the earthquake including relative location, date and time it occurred, and the magnitude.
 
-   * Include popups that provide additional information about the earthquake when a marker is clicked.
+* A color coded legend located in the bottom right corner of the broswer provides context for the depth of all earthquakes plotted on the map.
 
-   * Create a legend that will provide context for your map data.
 
-   * Your visualization should look something like the map above.
-
-- - -
 
 ### Level 2: More Data (Optional)
 
