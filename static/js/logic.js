@@ -57,6 +57,11 @@ var lightmap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{
       "Light_Map": lightmap
     };
 
+
+//Define earthquake layer and overlays
+var earthquakes = new L.LayerGroup();
+var overlays = {Earthquakes: earthquakes};
+
 // Create the map, giving it the satellite layer to display on load
 var myMap = L.map("map", {
   center: [
@@ -66,14 +71,11 @@ var myMap = L.map("map", {
   layers: [baseMaps.Satellite_Map]
 });
 
-//Define earthquake layer and overlays
-var earthquakes = new L.LayerGroup();
-var overlays = {Earthquakes: earthquakes}
-
 
 //Perform a GET request to the query URL
 d3.json(geoData).then(function(data) {
     console.log(data)
+
   //Load GeoJSON data and create circle markers based on lat/lng coordinates
   L.geoJSON(data, {
     pointToLayer: function(feature, latlng) {
@@ -99,7 +101,7 @@ d3.json(geoData).then(function(data) {
 
 
   // Create a layer control, pass in base and overlay maps, add layer control
-  L.control.layers(baseMaps, overlayMaps, {
+  L.control.layers(baseMaps, overlays, {
     collapsed: false
   }).addTo(myMap);
 
