@@ -28,6 +28,9 @@ function getRadius(magnitude) {
 //Store API endpoint inside a queryUrl
 var geoData = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson";
 
+//Store API endpoint for tectonic plate data
+var tectonicPlatesJSON = "../tectonicplates-master/GeoJSON/PB2002_plates.json";
+
 //Creating static tile maps
 var satellitemap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
   attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
@@ -75,8 +78,13 @@ var streetmap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/
 
 
 //Define earthquake layer and overlays
-var earthquakes = new L.LayerGroup();
-var overlays = {Earthquakes: earthquakes};
+var earthquakes = L.layerGroup(earthquakes);
+var tectonicPlates = new L.layerGroup();
+
+var overlays = {
+  "Earthquakes": earthquakes,
+  "Tectonic Plates": tectonicPlates
+}
 
 // Create the map, giving it the satellite layer to display on load
 var myMap = L.map("map", {
@@ -149,4 +157,16 @@ d3.json(geoData).then(function(data) {
 
   //Add legend to the map
   legend.addTo(myMap);
+});
+
+////Perform a GET request to the tectonic plates URL
+d3.json(tectonicPlatesJSON).then(function(plates) {
+  console.log(plates)
+
+  //Load GeoJSON data and create lines based on lat/lng coordinates?
+  L.geoJSON(plates, {
+    pointToLayer: function(plateFeature, latlng) {
+      return L.polyline(latlng);
+    }
+  });
 });
