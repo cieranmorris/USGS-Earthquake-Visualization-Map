@@ -92,7 +92,7 @@ var myMap = L.map("map", {
     37.09, -95.71
   ],
   zoom: 5,
-  layers: [baseMaps.Satellite]
+  layers: [baseMaps.Satellite, earthquakes, tectonicPlates]
 });
 
 
@@ -159,14 +159,7 @@ d3.json(geoData).then(function(data) {
   legend.addTo(myMap);
 });
 
-////Perform a GET request to the tectonic plates URL
+//Perform a GET request to the tectonic plates URL
 d3.json(tectonicPlatesJSON).then(function(plates) {
   console.log(plates)
-
-  //Load GeoJSON data and create lines based on lat/lng coordinates?
-  L.geoJSON(plates, {
-    pointToLayer: function(plateFeature, latlng) {
-      return L.polyline(latlng);
-    }
-  });
 });
