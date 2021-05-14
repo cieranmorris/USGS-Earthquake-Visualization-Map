@@ -97,6 +97,13 @@ d3.json(geoData).then(function(data) {
     }
   }).addTo(myMap);
 
+
+  // Create a layer control, pass in base and overlay maps, add layer control
+  L.control.layers(baseMaps, overlayMaps, {
+    collapsed: false
+  }).addTo(myMap);
+
+
   //Create a legend control object
   var legend = L.control({
     position: "bottomright",
@@ -115,20 +122,13 @@ d3.json(geoData).then(function(data) {
       "#ff3333"
     ];
 
-
-    
+    // Loop through earthquake data to assign appropriate colors
+    for (var i=0; i<grades.length; i++) {
+      div.innerHTML += "<i style = 'background: " + colors[i] + "'></i>" + grades[i] + (grades[i + 1] ? "&ndash;" + grades[i+1] +"<br>" : "+");
+    }
+    return div;
   };
 
-
-  // Create a layer control, pass in base and overlay maps, add layer control
-  L.control.layers(baseMaps, overlayMaps, {
-    collapsed: false
-  }).addTo(myMap);
-  // legend.addTo(myMap);
-
-
-  //Generate a legend for the earthquake intensities
-
-
-
+  //Add legend to the map
+  legend.addTo(myMap);
 });
