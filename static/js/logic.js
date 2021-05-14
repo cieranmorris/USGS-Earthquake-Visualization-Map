@@ -36,6 +36,13 @@ var satellitemap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/til
   accessToken: API_KEY
 });
 
+var outdoormap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
+  attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+  maxZoom: 18,
+  id: "outdoors-v10",
+  accessToken: API_KEY
+});
+
 var darkmap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
   attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
   maxZoom: 18,
@@ -50,11 +57,20 @@ var lightmap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{
   accessToken: API_KEY
 });
 
+var streetmap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
+  attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+  maxZoom: 18,
+  id: "streets-v11",
+  accessToken: API_KEY
+});
+
 //Create base map objects
     var baseMaps = {
-      "Satellite_Map": satellitemap,
-      "Dark_Map": darkmap,
-      "Light_Map": lightmap
+      "Satellite": satellitemap,
+      "Outdoors": outdoormap,
+      "Dark": darkmap,
+      "Light": lightmap,
+      "Street": streetmap
     };
 
 
@@ -68,7 +84,7 @@ var myMap = L.map("map", {
     37.09, -95.71
   ],
   zoom: 5,
-  layers: [baseMaps.Satellite_Map]
+  layers: [baseMaps.Satellite]
 });
 
 
