@@ -8,7 +8,7 @@ The United States Geological Survey is responsible for providing scientific data
 
 For this project, current earthquake data from the USGS was converted to a geoJSON format and visualized on an external server for interpretation. Specific programming languages used in this analysis included JavaScript with both Mapbox and Leaflet extensions, HTML, and CSS. 
 
-![global](Images/global_view.png)
+![US](Images/us_view.png)
 
 ### Data Sourcing
 
@@ -20,8 +20,8 @@ Using Leaflet and MapBox in the JavaScript code, all earthquakes from the JSON w
 
 * All earthquakes are represented by a semi-transparent circle, which is sized based on the magnitude of the earthquake and color coded based on the depth of the earthquake. Specifically, earthquakes with higher magnitudes display a larger radius and earthquakes with greater depth display a deeper shade of red. The depth of the earthquake is represented as the third coordinate in the geoJSON data.
 
-    * Here is an image displaying different radius and color gradients based on earthquake magnitude and depth:
-    ![Alaska](Images/size_examples.png)
+* Here is an image displaying different radius and color gradients based on earthquake magnitude and depth:
+![Alaska](Images/size_examples.png)
 
 * When clicking on any earthquake radius across the map, a popup appears providing additional information about the earthquake including relative location, date and time it occurred, and the magnitude.
 
@@ -41,7 +41,7 @@ To take this analysis further, the tectonic plates of the earth were integrated 
 
 * An added element to the layer control center allows the user to toggle independently between the earthquake data and the tectonic plate data in order to visualize their relative locations and potential effects on size and magnitude of all reported earthquakes around the world.
 
-![US](Images/us_view.png)
+![global](Images/global_view.png)
 
 ### Final Analysis
 
