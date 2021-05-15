@@ -162,4 +162,8 @@ d3.json(geoData).then(function(data) {
 //Perform a GET request to the tectonic plates URL
 d3.json(tectonicPlatesJSON).then(function(plates) {
   console.log(plates)
+  L.geoJSON(plates, {
+    color: "blue"
+  }).addTo(tectonicPlates)
+  tectonicPlates.addTo(map);
 });
