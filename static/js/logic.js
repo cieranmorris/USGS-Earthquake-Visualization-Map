@@ -91,7 +91,7 @@ var myMap = L.map("map", {
   center: [
     37.09, -95.71
   ],
-  zoom: 5,
+  zoom: 4,
   layers: [baseMaps.Satellite, earthquakes, tectonicPlates]
 });
 
@@ -119,7 +119,7 @@ d3.json(geoData).then(function(data) {
     // Give each feature a popup describing the place and time of the earthquake
     onEachFeature: function (feature, layer) {
       layer.bindPopup("<h3> Location: &nbsp" + feature.properties.place +
-        "</h3><hr><p> Date & Time: &nbsp" + new Date(feature.properties.time) + "</p>" + "<h3> Magnitude: &nbsp" + feature.properties.mag);
+        "</h3><hr><p> Date & Time: &nbsp" + new Date(feature.properties.time) + "</p>" + "<h3> Magnitude: &nbsp" + feature.properties.mag + "<h3> Depth (km): &nbsp;" + feature.geometry.coordinates[2]);
     }
   }).addTo(myMap);
 
